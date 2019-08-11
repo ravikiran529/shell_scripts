@@ -1,6 +1,6 @@
-#!/bin/bash
-set -e
+#!/bin/bash -ex
 set -u
+
 #This script copies artifact to s3 bucket which has been built by maven.
 mkdir -p /root/scripts/jtest
 cd /root/scripts/jtest
@@ -18,13 +18,13 @@ then
    exit 1
 fi
 
-PATH=/root/scripts/j2test/jenkinsRepo/shivasai-app/target/shivasai-app-1.0-SNAPSHOT.jar
+MYPATH=/root/scripts/jtest/jenkinsRepo/shivasai-app/target/shivasai-app-1.0-SNAPSHOT.jar
 BUCKET=s3://cloudzindagi.tk/
 
-aws s3 cp $PATH $BUCKET
+aws s3 cp $MYPATH $BUCKET
 
 if [ "$?" == "0" ]     
-
+then
    echo "deploying artifact to s3 bucket is successful!"
 
 else
