@@ -42,4 +42,12 @@ aws s3api create-bucket --bucket $s3BucketName --region eu-west-1
 printf "Enter a cluster name"
 read name
 export KOPS_CLUSTER_NAME=$name
-kops create cluster --name=$KOPS_CLUSTER_NAME --cloud=aws --zones=eu-west-1a --state=$KOPS_STATE_STORE
+kops create cluster --state $KOPS_STATE_STORE \
+       --cloud=aws
+       --zones "us-west-1a,us-west-1b"  \
+       --master-count 3 \
+       --master-size=t2.micro \
+       --node-count 2 \
+       --node-size=t2.micro \
+       --name $KOPS_CLUSTER_NAME \
+       --yes
