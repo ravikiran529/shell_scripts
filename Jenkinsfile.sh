@@ -3,7 +3,7 @@
 
 #Step-1: cloning git repository..
 git clone https://github.com/ravikiran529/Maven-Java-Project.git
-echo "source code updated updated.."
+echo "source code updated.."
 cd /Maven-Java-Project
 
 #Step-2: Perform test cases
